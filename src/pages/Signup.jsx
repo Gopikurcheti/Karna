@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import '../css/Signup.css'
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { GoogleAuthProvider, GithubAuthProvider, signInWithPopup } from 'firebase/auth'
+import { GoogleAuthProvider, FacebookAuthProvider, signInWithPopup } from 'firebase/auth'
 import { auth, db } from "../Firebase"
 import { doc, setDoc } from "firebase/firestore"
 
@@ -86,16 +86,16 @@ function Signup() {
   };
 
   const handleGithubAuth = async () => {
-    const provider = new GithubAuthProvider();
+    const provider = new FacebookAuthProvider();
     setLoading(true);
     try {
       const result = await signInWithPopup(auth, provider);
       const user = result.user;
       await addToFirestore(user);
-      alert("Registered successfully with GitHub");
+      alert("Registered successfully with Facebook");
       navigate("/chat");
     } catch (error) {
-      console.error("GitHub auth error:", error);
+      console.error("Facebook auth error:", error);
       
       // Handle specific GitHub auth errors
       if (error.code === 'auth/account-exists-with-different-credential') {
@@ -103,7 +103,7 @@ function Signup() {
       } else if (error.code === 'auth/popup-closed-by-user') {
         alert("Sign-in popup was closed. Please try again.");
       } else {
-        alert(`GitHub authentication failed: ${error.message}`);
+        alert(`Facebook authentication failed: ${error.message}`);
       }
     } finally {
       setLoading(false);
@@ -160,7 +160,7 @@ function Signup() {
                   <i className="fab fa-google"></i> Google
                 </div>
                 <div className="social-btn github" onClick={handleGithubAuth}>
-                  <i className="fab fa-github"></i> GitHub
+                  <i className="fab fa-github"></i> Facebook
                 </div>
               </div>
 
