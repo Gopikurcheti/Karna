@@ -1,0 +1,144 @@
+.chat-container{
+    margin:0;
+    padding:0;
+    width: 100vw;
+    height: 100vh;
+    overflow:hidden;
+    background-image:url('/karna4.jpg');
+    background-repeat: no-repeat;
+    background-position:center;
+    background-size:cover;
+    position:relative;
+
+
+    display: flex;
+    row-gap: 5px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.chats{
+    border: 1px solid black;
+    border-radius: 10px;
+    width: 680px;
+    /* background-color: rgba(255, 255, 255, 0.226); */
+    background-image:url('/karna3.jpg');
+    background-position:center;
+    background-size:cover;
+    background-repeat: no-repeat;
+    color:white;
+    padding: 5px;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 6px;
+    overflow: hidden;
+
+}
+
+
+h1{
+    color:blue;
+    letter-spacing:'1.5px';
+    text-align:center;
+}
+
+#chat-form{
+    display:flex;
+    column-gap:'5px';
+    flex-wrap:wrap;
+}
+
+
+
+#chat-inp{
+    height:35px;
+    width:300px;
+    border:none;
+    outline:none;
+    font-size:20px;
+    padding-left:15px;
+    border-radius:15px;
+
+   background: rgba(0, 149, 255, 0.578);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(0, 149, 255, 0.663);
+  color: white;
+  font-size: 15px;
+  
+  /* background: rgba(255, 255, 255, 0.15); */
+  /* backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.2); */
+}
+
+
+#chat-inp::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+#chat-btn{
+    height:35px;
+    padding:2px;
+    width:fit-content;
+}
+
+/* From Uiverse.io by adamgiebl */ 
+#chat-btn {
+  font-family: inherit;
+  font-size: 20px;
+  background: royalblue;
+  color: white;
+  padding: 0.7em 1em;
+  padding-left: 0.9em;
+  display: flex;
+  align-items: center;
+  border: none;
+  border-radius: 16px;
+  overflow: hidden;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+
+#chat-btn:hover{
+   background: royalblue;
+}
+
+#chat-btn span {
+  display: block;
+  margin-left: 0.3em;
+  transition: all 0.3s ease-in-out;
+}
+
+#chat-btn svg {
+  display: block;
+  transform-origin: center center;
+  transition: transform 0.3s ease-in-out;
+  transform: rotate(-20deg); 
+}
+
+#chat-btn:hover .svg-wrapper {
+  animation: fly-1 0.6s ease-in-out infinite alternate;
+}
+
+#chat-btn:hover svg {
+  transform: translateX(1.2em) rotate(0deg) scale(1.1);
+}
+
+#chat-btn:hover span {
+  transform: translateX(50em);
+}
+
+#chat-btn:active {
+  transform: scale(0.95);
+}
+
+@keyframes fly-1 {
+  from {
+    transform: translateY(0.1em);
+  }
+
+  to {
+    transform: translateY(-0.1em);
+  }
+}
