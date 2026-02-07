@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import '../css/Chat.css'
 import {db, auth} from '../Firebase'
 import {useAuthState} from "react-firebase-hooks/auth"
-import { collection, onSnapshot, orderBy, query } from 'firebase/firestore'
+import {addDoc, collection, onSnapshot, orderBy, query, serverTimestamp } from 'firebase/firestore'
 
 function Chat() {
 
@@ -14,6 +14,19 @@ function Chat() {
 
 
    const handleSendMessage = async (e)=>{
+
+       e.preventDefault();
+
+    if(newMessage.trim()==='') return;
+      const messageRef = collection(db, 'chats','room1','messages')
+
+      await addDoc(messageRef,{
+        sender:user.uid,
+        message:newMessage.trim(),
+        timestamp:serverTimestamp()
+      });
+      setNewMessage('') 
+    
     alert('sending messages is disabled now')
   }
 
@@ -23,7 +36,7 @@ function Chat() {
         const userCollection = collection(db, "users")
       
         onSnapshot(userCollection, (snapshot)=>{
-          const userList = snapshot.doc.map(doc=>doc.data())
+          const userList = snapshot.docs.map(doc=>doc.data())
           setUsers(userList)
           console.log(userList)
         })
@@ -32,7 +45,7 @@ function Chat() {
   },[])
 
   useEffect(()=>{
-    const msgRef = collection(db, 'Chats', 'room1', 'messages');
+    const msgRef = collection(db, 'chats', 'room1', 'messages'); // FIXED: Changed 'hats' to 'chats'
     const q = query(msgRef, orderBy('timestamp'))
 
     const unsubscribe = onSnapshot(q,(snapshot)=>{
@@ -51,10 +64,10 @@ function Chat() {
       <div className='chats'>
         {messages.length===0 ? (<p>No message available</p>):(
           messages.map((msg,index)=>{
-            const sender = users.find((u)=>u.uid.trim()===msg.sender.trim());
+            const sender = users.find((u)=>u.uid?.trim()===msg.sender?.trim());
             const senderName = sender ? sender.name : 'Unknown'
             return(
-              <div key={index}  style={{textAlign:user.uid===msg.sender? 'right':'left', padding:'10px 0 0 20px'}}>
+              <div key={index}  style={{textAlign:user?.uid===msg.sender? 'right':'left', padding:'10px 0 0 20px'}}>
                   <strong>{senderName} :</strong>
                   {msg.message}
               </div>
@@ -65,7 +78,7 @@ function Chat() {
 
       </div>
 
-      <form id='chat-form' onSbimt={handleSendMessage}>
+      <form id='chat-form' onSubmit={handleSendMessage}>
 
         <input
         id='chat-inp'
@@ -74,7 +87,7 @@ function Chat() {
         placeholder='Enter your message' />
 
         <button id="chat-btn" >
-           <div class="svg-wrapper">
+           <div className="svg-wrapper">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="24"

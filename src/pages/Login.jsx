@@ -81,7 +81,7 @@ function Login() {
     }
   };
 
-  const handleGithubAuth = async () => {
+  const handleFacebookAuth = async () => {
     const provider = new FacebookAuthProvider();
     setLoading(true);
     try {
@@ -155,7 +155,7 @@ function Login() {
                 <div className="social-btn google" onClick={handleGoogleAuth}>
                   <i className="fab fa-google"></i> Google
                 </div>
-                <div className="social-btn github" onClick={handleGithubAuth}>
+                <div className="social-btn github" onClick={handleFacebookAuth}>
                   <i className="fab fa-github"></i> Facebook
                 </div>
               </div>
