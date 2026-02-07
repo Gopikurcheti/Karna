@@ -71,7 +71,7 @@ function Login() {
         photoURL: user.photoURL || null
       }, { merge: true });
       
-      alert("Logged in successfully with Google");
+     
       navigate("/chat");
     } catch (error) {
       console.error("Google auth error:", error);
@@ -97,7 +97,7 @@ function Login() {
         photoURL: user.photoURL || null
       }, { merge: true });
       
-      alert("Logged in successfully with Facebook");
+      
       navigate("/chat");
     } catch (error) {
       console.error("Facebook auth error:", error);
