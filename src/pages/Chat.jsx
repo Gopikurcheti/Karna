@@ -67,7 +67,7 @@ function Chat() {
             const sender = users.find((u)=>u.uid?.trim()===msg.sender?.trim());
             const senderName = sender ? sender.name : 'Unknown'
             return(
-              <div key={index}  style={{textAlign:user?.uid===msg.sender? 'right':'left', padding:'10px 0 0 20px'}}>
+              <div key={index}  style={{textAlign:user?.uid===msg.sender? 'right':'left', padding:'12px 20px 0 24px'}}>
                   <strong>{senderName} :</strong>
                   {msg.message}
               </div>

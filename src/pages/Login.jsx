@@ -123,7 +123,7 @@ function Login() {
 
             {/* LOGIN */}
             <div className="form-section login">
-              <h2>Login</h2>
+              <h2>Login&nbsp;<img src='sun.png' width='28px'/></h2>
 
               <form onSubmit={handleLoginSubmit}>
                 <input 
@@ -153,10 +153,10 @@ function Login() {
 
               <div className="social">
                 <div className="social-btn google" onClick={handleGoogleAuth}>
-                  <i className="fab fa-google"></i> Google
+                  <i className="fab fa-google"></i><img src='/google.png' width='15px'/> Google 
                 </div>
                 <div className="social-btn github" onClick={handleFacebookAuth}>
-                  <i className="fab fa-github"></i> Facebook
+                  <i className="fab fa-github"></i><img src='/facebook.png' width='15px'/>Facebook
                 </div>
               </div>
              

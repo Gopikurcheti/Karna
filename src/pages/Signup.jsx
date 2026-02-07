@@ -118,7 +118,7 @@ function Signup() {
 
             {/* SIGNUP */}
             <div className="form-section signup">
-              <h2>Sign Up</h2>
+              <h2>Sign Up&nbsp;<img src='sun.png' width='28px'/></h2>
               <form onSubmit={handleSignupSubmit}>
                 <input 
                   className='sig-inp'
@@ -157,10 +157,10 @@ function Signup() {
               
               <div className="social">
                 <div className="social-btn google" onClick={handleGoogleAuth}>
-                  <i className="fab fa-google"></i> Google
+                  <i className="fab fa-google"></i><img src='/google.png' width='15px'/> Google
                 </div>
                 <div className="social-btn github" onClick={handleGithubAuth}>
-                  <i className="fab fa-github"></i> Facebook
+                  <i className="fab fa-github"></i><img src='/facebook.png' width='15px'/> Facebook
                 </div>
               </div>
 
