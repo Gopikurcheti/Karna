@@ -27,7 +27,7 @@ function Chat() {
       });
       setNewMessage('') 
     
-    alert('sending messages is disabled now')
+   
   }
 
 
